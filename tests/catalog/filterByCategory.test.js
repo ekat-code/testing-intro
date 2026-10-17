@@ -10,5 +10,8 @@ describe('filterByCategory', () => {
   test.todo("'home' возвращает товары с ID [4, 5]");
   test.todo("'clothes' возвращает пустой массив");
   test.todo("'toys' возвращает пустой массив");
-  test.todo("'sports' возвращает пустой массив");
+  test('"sports" возвращает пустой массив', () => {
+    const category = 'sports';
+    expect(filterByCategory(products, category)).toEqual([]);
+  });
 });

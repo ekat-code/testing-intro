@@ -2,14 +2,22 @@ const products = require('../../src/data/products');
 const { filterByCategory } = require('../../src/catalog');
 
 describe('filterByCategory', () => {
-  test.todo("'all' возвращает товары с ID [1, 2, 3, 4, 5, 6]");
-  test.todo("undefined возвращает товары с ID [1, 2, 3, 4, 5, 6]");
-  test.todo("пустая строка возвращает товары с ID [1, 2, 3, 4, 5, 6]");
-
+  test('"all" возвращает товары с ID [1, 2, 3, 4, 5, 6]', () => {
+    const filterId = filterByCategory(products, 'all').map((item) => item.id);
+    expect(filterId).toEqual([1, 2, 3, 4, 5, 6]);
+  });
+  test('undefined возвращает товары с ID [1, 2, 3, 4, 5, 6]', () => {
+    const filterId = filterByCategory(products, undefined).map((item) => item.id);
+    expect(filterId).toEqual([1, 2, 3, 4, 5, 6]);
+  });
+  test('пустая строка возвращает товары с ID [1, 2, 3, 4, 5, 6]', () => {
+    const filterId = filterByCategory(products, '').map((item) => item.id);
+    expect(filterId).toEqual([1, 2, 3, 4, 5, 6]);
+  });
   test('"electronics" возвращает товары с ID [1, 2]', () => {
     const filterId = filterByCategory(products, 'electronics').map((item) => item.id);
     expect(filterId).toEqual([1, 2]);
-  })
+  });
   test('"books" возвращает товары с ID [3, 6]', () => {
     const filterId = filterByCategory(products, 'books').map((item) => item.id);
     expect(filterId).toEqual([3, 6]);
